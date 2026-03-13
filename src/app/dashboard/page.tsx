@@ -31,14 +31,14 @@ export default async function DashboardPage() {
         },
     });
 
-    const tasks = rawTasks.map(task => ({
+    const tasks = rawTasks.map((task: typeof rawTasks[number]) => ({
         ...task,
         description: task.description || "",
     }));
 
     const totalTasks = tasks.length;
-    const completedTasks = tasks.filter(task => task.status === "DONE").length;
-    const inProgressTasks = tasks.filter(task => task.status === "IN_PROGRESS").length;
+    const completedTasks = tasks.filter((task: { status: string }) => task.status === "DONE").length;
+    const inProgressTasks = tasks.filter((task: { status: string }) => task.status === "IN_PROGRESS").length;
 
   return (
     <div>
